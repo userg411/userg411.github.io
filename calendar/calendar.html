@@ -1,1 +1,134 @@
+<html>
+	<head>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+		
+		<script src="calendar.js" type = "text/javascript"></script>
+		<style>
+			body{
+				font-family: "Calibri";
+				font-size: small;
+			}
+			.title, .test{
+				text-align:center;
+				margin-bottom: 1px;
+			}
+			caption, .title{
+				border:none;
+				background: #1abc9c;
+				color:white;
+				padding: 5px;
+			}
+			
+			.title{
+				padding:1px;
+			}
+			.weekdays td{
+				color: #666;
+				background-color: #ddd;
+				padding: 3px 3px;
+			}
+			.days td{
+				font-size:12px;
+				color: #777;
+				background: #eee;
+			}
+			table,td,th,tr,caption {
+				text-align:center;
+				border-collapse:collapse;
+				border:none;
+			}
+			table.mainTable,table.monthTable{
+				width:100%;
+			}
+			
+			td{
+				cursor: pointer;
+			}
+			div{
+				border: 0px solid black;
+			}
+			#left, #right{
+				float:left;
+				width:50%;
+				overflow:hidden;
+			}
+			
+			.test{
+				float:left;
+				width:25%;
+				overflow:hidden;
+				cursor: pointer;
+			}
+			.active
+			{
+				background-color:#1abc9c;
+				color:white;
+			}
+			.passive{
+				background-color:#eee;
+				color:#777;
+			}
+		</style>
+				
+	</head>
+	<body>
+		<div class = "title">
+			<h3>CHOOSE SHIFT TYPE AND PRESS FIRST DAY OF ANY SHIFT</h3>
+		</div>
+		<div>	
+				<div class = "test active" id = "s28"> 28</div>
+				<div class = "test passive" id = "s21">21</div>	
+				<div class = "test passive" id = "s14">14 </div>
+				<div class = "test passive" id = "s7">7 </div>
+				
+		</div>	
+		<script>
+			draw();
+			$( ".test" ).click(function() {
+				shift = parseInt(this.id.substring(1));
+				$( ".test" ).removeClass('active');
+				$( ".test" ).addClass('passive');
+				$(this).removeClass('active passive');
+				$(this).addClass('active');
+				$( ".days  td" ).css('background-color','#eee;');
+				$( ".days  td" ).css('color','#777');
+			});
 
+
+			var shift = 28;
+			var ch = document.getElementsByName('shift');
+			for (var i = ch.length; i--;) {
+				ch[i].onchange = function() {
+					shift = parseInt(this.value);
+					refresh();
+				}
+			}
+			refresh();
+			function refresh(){
+			$(document).ready(function() {
+				
+				$( ".days  td" ).on( "click", function( event ) {
+					$( ".days  td" ).css('background-color','#eee;');
+					$( ".days  td" ).css('color','#777');
+					var id = parseInt(this.id);
+					var j = 1;
+					for(var i=id;i<800;i++){
+						if(j<=(shift+1)){
+							$("#"+i).css('background-color','#1abc9c');
+							$("#"+i).css('color','white');
+						}	
+						else if(j===shift*2) {
+							j=1;
+							id++;
+							continue;
+						}
+					   j++;
+					}
+			  });
+		  }); 
+				
+			}
+			
+  </script>
+ </body>
+</html>
