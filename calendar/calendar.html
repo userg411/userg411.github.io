@@ -96,19 +96,14 @@
 
 
 			var shift = 28;
-			var ch = document.getElementsByName('shift');
-			for (var i = ch.length; i--;) {
-				ch[i].onchange = function() {
-					shift = parseInt(this.value);
-					refresh();
-				}
-			}
+			
 			refresh();
 			function refresh(){
 			$(document).ready(function() {
 				
 				$( ".days  td" ).on( "click", function( event ) {
-					$( ".days  td" ).css('background-color','#eee;');
+					
+					$( ".days  td" ).css('background-color','#eee');
 					$( ".days  td" ).css('color','#777');
 					var id = parseInt(this.id);
 					var j = 1;
