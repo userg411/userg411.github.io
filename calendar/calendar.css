@@ -1,0 +1,52 @@
+body{
+	font-family: "Calibri";
+	font-size: small;
+}
+
+.title{
+	border:none;
+	background: #1abc9c;
+	color:white;
+	padding: 5px;
+    text-align:center;
+	
+}
+
+.active
+{
+	background-color:#1abc9c;
+	color:white;
+}
+.disabled{
+	background: #cccccc;
+	color: #ffffff;
+	pointer-events: none;
+}
+ul{
+	width: 100%;
+	display: table;
+	padding: 0px;
+	margin: 0px;		
+}
+li{
+	display: table-cell;
+	text-align: center;
+    color: #777;
+}
+.weekdays li{
+    display: inline-block;
+    width: 13.6%;
+	color: #666;
+    text-align: center;
+	background-color: #ddd;
+}
+.days li{
+	font-size:12px;
+    width: 13.6%;
+	display: inline-block;
+    list-style-type: none;
+    cursor: pointer;
+}
+.employees li, .shifts li, .days li{
+    cursor: pointer;
+}
